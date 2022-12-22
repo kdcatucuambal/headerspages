@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>Test page</h1>
+    <script>
+        function onAuthentication(){
+            console.clear()
+            const endpointUrl = "https://6cgfccej9g.execute-api.us-east-1.amazonaws.com/v1/auth/authentication"
+            headers = {
+                "x-end-user-terminal": "10.20.30.90",
+                "x-request-id": "a28107f0-a9b7-43c6-bfb6-6f1a080a2710",
+                "x-end-user-login": "spaternina",
+                "x-end-user-request-date-time": "2021-11-11T09:57:00Z",
+                "x-api-key": "LrnxMVUqpK2E51diVY19X7eQtup46BaB7CO0yQxF",
+                "Content-Type": "application/json",
+                // "paginitaDePrueba": "https://spaternina.github.io",
+            }
+            body = {
+                authentication: {
+                    login: "spaternina",
+                    password: "Sebastian26#"
+                }
+            }
+
+            axios.post(endpointUrl, body, { headers: headers })
+                .then(response => {
+                    console.log("Successful request")
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.error("Something wrong happened.")
+                    console.error(error)
+                })
+        }
+
+        function sendRequest() {
+            console.clear()
+            const endpointUrl = "https://dwcw7o5q84.execute-api.us-east-2.amazonaws.com/live/customers"
+            const headers = {
+                "Content-Type": "application/json",
+               // "origin": "https://browserless.io",
+            }
+            const body = {
+                "id": "1050",
+                "name": "Kevin",
+                "lastName": "Catucuamba",
+                "email": "catucuambakevin@gmail.com",
+                "postalCode": 1050,
+                "active": true,
+                "index": 1
+            }
+
+            axios.post(endpointUrl, body, { headers: headers })
+                .then(response => {
+                    console.log("Successful request")
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.error("Something wrong happened.")
+                    console.error(error)
+                })
+        //     axios.get(endpointUrl, { headers: headers })
+        //         .then(response => {
+        //             console.log("Successful request")
+        //             console.log(response)
+        //         })
+        //         .catch(error => {
+        //             console.error("Something wrong happened.")
+        //             console.error(error)
+        //         })
+        // 
+    }
+
+    </script>
+    <button onclick="sendRequest()">Enviar petición</button>
+    <button onclick="onAuthentication()">Enviar petición auth</button>
+</body>
+
+</html>
